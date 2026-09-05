@@ -30,10 +30,10 @@ JDBC URL: `jdbc:h2:mem:springedumanager`, usuario `sa`, sin contraseña.
 
 ### Usuarios de prueba (Spring Security)
 
-| Usuario | Contraseña | Rol            |
-|---------|------------|----------------|
-| admin   | admin123   | ADMIN, USER    |
-| user    | user123    | USER           |
+| Usuario | Contraseña | Rol         |
+| ------- | ---------- | ----------- |
+| admin   | admin123   | ADMIN, USER |
+| user    | user123    | USER        |
 
 Solo el usuario **admin** puede crear/editar/eliminar cursos y registrar
 evaluaciones. Cualquier usuario autenticado puede gestionar estudiantes y
@@ -83,67 +83,3 @@ src/main/resources/
     ├── cursos/{list,form}.html
     └── evaluaciones/{list,form}.html
 ```
-
-## Cobertura por lección
-
-### Lección 1 — El gestor de proyectos
-- Proyecto Maven creado con `pom.xml` (equivalente a generarlo desde
-  start.spring.io) con las dependencias: `spring-boot-starter-web`,
-  `spring-boot-starter-data-jpa`, `spring-boot-starter-security`, `h2`,
-  `mysql-connector-j` (alternativa), `spring-boot-starter-thymeleaf`,
-  `spring-boot-starter-validation`.
-- El ciclo de vida se verifica con `mvn clean`, `mvn install` y `mvn package`.
-- Listo para subir a GitHub (incluye `.gitignore`).
-
-### Lección 2 — El Framework Spring MVC
-- Entidades `Estudiante` y `Curso` con sus controladores (`EstudianteController`,
-  `CursoController`) y vistas Thymeleaf.
-- Formularios HTML (Thymeleaf) para ingresar estudiantes y cursos.
-- Rutas con `@Controller`, `@GetMapping`, `@PostMapping`.
-- Listado de cursos y estudiantes visible en la interfaz (`/estudiantes`, `/cursos`).
-
-### Lección 3 — Acceso a Datos en Spring Framework
-- Repositorios `EstudianteRepository`, `CursoRepository`, `EvaluacionRepository`
-  que extienden `JpaRepository`.
-- Base de datos embebida H2 configurada en `application.properties` (con bloque
-  comentado listo para MySQL).
-- Capa `@Service` (`EstudianteService`, `CursoService`, `EvaluacionService`)
-  sobre los repositorios `@Repository`.
-- Los formularios de la Lección 2 ya persisten y consultan datos reales.
-
-### Lección 4 — Control de acceso mediante Spring Security
-- Dependencia `spring-boot-starter-security` agregada.
-- Usuarios definidos (equivalente a `application.properties`) en
-  `SecurityConfig` con `BCryptPasswordEncoder`.
-- Rutas protegidas por rol con `@PreAuthorize("hasRole('ADMIN')")` en
-  `CursoController`, `EvaluacionController` y sus equivalentes REST.
-- Formulario de login (`/login`) y logout funcional (`/logout`).
-- Solo ADMIN puede ingresar nuevos cursos y evaluaciones.
-
-### Lección 5 — La interoperabilidad entre los sistemas
-- Controladores `@RestController` (`EstudianteRestController`,
-  `CursoRestController`, `EvaluacionRestController`) que exponen datos en JSON.
-- Operaciones CRUD completas con `@GetMapping`, `@PostMapping`, `@PutMapping`,
-  `@DeleteMapping`.
-- Pensado para probarse desde Postman o un cliente `RestTemplate` externo.
-- JWT queda como mejora opcional (plus) no implementada en esta entrega; la
-  API REST actualmente se protege con Spring Security (Basic Auth / sesión).
-
-## Qué se valida (checklist de entrega)
-
-- [x] Estructura y modularización según buenas prácticas (capas model /
-      repository / service / controller).
-- [x] Uso adecuado de Maven y configuración de dependencias.
-- [x] Implementación funcional del patrón MVC.
-- [x] Persistencia y manipulación de datos con JPA (H2, con alternativa MySQL).
-- [x] Configuración segura con roles y login/logout.
-- [x] Servicios RESTful con respuesta en JSON.
-- [x] Coherencia entre entregas (todas las lecciones integradas en un único proyecto).
-
-## Entregables sugeridos (según la consigna)
-
-- Repositorio Git con el proyecto completo y este `README.md`.
-- Capturas de pantalla o video breve mostrando: login, listado de estudiantes/
-  cursos/evaluaciones, alta de un curso como ADMIN, y una petición a la API
-  REST desde Postman.
-- Enlace al repositorio en tu portafolio y en tu CV.
