@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>SpringEduManager</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: nav}"></div>
+
+<div class="container">
+    <h1>Bienvenido a SpringEduManager</h1>
+    <p>
+        Plataforma interna del bootcamp para que la Coordinacion Academica y los
+        estudiantes gestionen cursos, practicas y evaluaciones desde un unico lugar.
+    </p>
+
+    <div class="card">
+        <h2>Accesos rapidos</h2>
+        <p><a class="btn" th:href="@{/estudiantes}">Ver estudiantes</a></p>
+        <p><a class="btn" th:href="@{/cursos}">Ver cursos</a></p>
+        <p><a class="btn" th:href="@{/evaluaciones}">Ver evaluaciones</a></p>
+    </div>
+
+    <div class="card" sec:authorize="!isAuthenticated()">
+        <h2>¿Ya tenes cuenta?</h2>
+        <p>Inicia sesion para registrar cursos, estudiantes y evaluaciones.</p>
+        <a class="btn" th:href="@{/login}">Iniciar sesion</a>
+    </div>
+
+    <div class="card">
+        <h2>API REST</h2>
+        <p>Los datos tambien estan disponibles como servicio REST en formato JSON:</p>
+        <ul>
+            <li><code>GET/POST/PUT/DELETE /api/estudiantes</code></li>
+            <li><code>GET/POST/PUT/DELETE /api/cursos</code></li>
+            <li><code>GET/POST/DELETE /api/evaluaciones</code></li>
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

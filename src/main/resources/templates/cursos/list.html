@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Cursos - SpringEduManager</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: nav}"></div>
+
+<div class="container">
+    <h1>Cursos</h1>
+
+    <div th:replace="~{fragments :: mensaje}"></div>
+
+    <p sec:authorize="hasRole('ADMIN')">
+        <a class="btn" th:href="@{/cursos/nuevo}">+ Nuevo curso</a>
+    </p>
+    <p sec:authorize="isAuthenticated() and !hasRole('ADMIN')" style="color:#666; font-size:0.9rem;">
+        Solo un usuario con rol ADMIN puede crear o editar cursos.
+    </p>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Docente</th>
+            <th>Estudiantes inscritos</th>
+            <th sec:authorize="hasRole('ADMIN')">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="curso : ${cursos}">
+            <td th:text="${curso.nombre}"></td>
+            <td th:text="${curso.descripcion}"></td>
+            <td th:text="${curso.docente}"></td>
+            <td th:text="${#sets.size(curso.estudiantes)}"></td>
+            <td class="actions" sec:authorize="hasRole('ADMIN')">
+                <a th:href="@{/cursos/editar/{id}(id=${curso.id})}">Editar</a>
+                <a th:href="@{/cursos/eliminar/{id}(id=${curso.id})}"
+                   onclick="return confirm('¿Eliminar este curso?');">Eliminar</a>
+            </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(cursos)}">
+            <td colspan="5">No hay cursos registrados todavia.</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+
+<div th:fragment="nav">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a th:href="@{/}">📚 SpringEduManager</a>
+        </div>
+        <div class="navbar-links">
+            <a th:href="@{/estudiantes}">Estudiantes</a>
+            <a th:href="@{/cursos}">Cursos</a>
+            <a th:href="@{/evaluaciones}">Evaluaciones</a>
+            <span sec:authorize="isAuthenticated()" class="navbar-user">
+                👤 <span sec:authentication="name">usuario</span>
+                (<span sec:authorize="hasRole('ADMIN')">ADMIN</span><span sec:authorize="!hasRole('ADMIN')">USER</span>)
+                <form th:action="@{/logout}" method="post" class="logout-form">
+                    <button type="submit">Cerrar sesion</button>
+                </form>
+            </span>
+            <a sec:authorize="!isAuthenticated()" th:href="@{/login}">Iniciar sesion</a>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="mensaje" th:if="${mensaje}" class="alert">
+    <p th:text="${mensaje}"></p>
+</div>
+
+</body>
+</html>

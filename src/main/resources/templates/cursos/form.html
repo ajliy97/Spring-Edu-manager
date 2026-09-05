@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de curso - SpringEduManager</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: nav}"></div>
+
+<div class="container">
+    <h1 th:text="${curso.id} != null ? 'Editar curso' : 'Nuevo curso'"></h1>
+
+    <div class="card">
+        <form th:action="@{/cursos/guardar}" th:object="${curso}" method="post">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-group">
+                <label for="nombre">Nombre del curso</label>
+                <input type="text" id="nombre" th:field="*{nombre}">
+                <p class="error" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
+            </div>
+
+            <div class="form-group">
+                <label for="descripcion">Descripcion</label>
+                <textarea id="descripcion" rows="3" th:field="*{descripcion}"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="docente">Docente</label>
+                <input type="text" id="docente" th:field="*{docente}">
+            </div>
+
+            <button type="submit" class="btn">Guardar</button>
+            <a th:href="@{/cursos}" class="btn" style="background:#888;">Cancelar</a>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

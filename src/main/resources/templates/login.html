@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar sesion - SpringEduManager</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: nav}"></div>
+
+<div class="container">
+    <div class="card login-box">
+        <h1>Iniciar sesion</h1>
+
+        <p class="error" th:if="${param.error}">Usuario o contraseña incorrectos.</p>
+        <p class="alert" th:if="${param.logout}">Sesion cerrada correctamente.</p>
+
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="username">Usuario</label>
+                <input type="text" id="username" name="username" required autofocus>
+            </div>
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Ingresar</button>
+        </form>
+
+        <p style="margin-top:16px; font-size:0.85rem; color:#666;">
+            Usuarios de prueba: <br>
+            <strong>admin / admin123</strong> (rol ADMIN)<br>
+            <strong>user / user123</strong> (rol USER)
+        </p>
+    </div>
+</div>
+
+</body>
+</html>

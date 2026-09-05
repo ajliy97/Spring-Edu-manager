@@ -1,0 +1,158 @@
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f6f8;
+    color: #222;
+}
+
+.navbar {
+    background-color: #2c3e6b;
+    color: white;
+    padding: 12px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.navbar-brand a {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 18px;
+}
+
+.navbar-links a:hover {
+    text-decoration: underline;
+}
+
+.navbar-user {
+    margin-left: 18px;
+}
+
+.logout-form {
+    display: inline;
+}
+
+.logout-form button {
+    background: none;
+    border: none;
+    color: #ffdca8;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 1rem;
+    margin-left: 8px;
+}
+
+.container {
+    max-width: 960px;
+    margin: 32px auto;
+    padding: 0 20px;
+}
+
+h1, h2 {
+    color: #2c3e6b;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+th {
+    background-color: #eef1f8;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #2c3e6b;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.btn:hover {
+    background-color: #1e2c4d;
+}
+
+.btn-danger {
+    background-color: #b3435c;
+}
+
+.btn-danger:hover {
+    background-color: #8f2e44;
+}
+
+.actions a {
+    margin-right: 8px;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+input[type="text"], input[type="email"], input[type="number"], input[type="password"], textarea, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.error {
+    color: #b3435c;
+    font-size: 0.9rem;
+}
+
+.alert {
+    background-color: #dff0d8;
+    border: 1px solid #c3e6cb;
+    color: #2f5a34;
+    padding: 10px 16px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.checkbox-list label {
+    font-weight: normal;
+    display: inline-block;
+    margin-right: 12px;
+}
+
+.login-box {
+    max-width: 360px;
+    margin: 80px auto;
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error - SpringEduManager</title>
+    <link rel="stylesheet" th:href="@{/css/estilos.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments :: nav}"></div>
+
+<div class="container">
+    <h1>Ocurrio un error</h1>
+    <p class="error" th:text="${mensajeError} ?: 'Ha ocurrido un error inesperado.'"></p>
+    <a class="btn" th:href="@{/}">Volver al inicio</a>
+</div>
+
+</body>
+</html>
