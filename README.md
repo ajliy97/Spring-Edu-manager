@@ -36,9 +36,7 @@ JDBC URL: `jdbc:h2:mem:springedumanager`, usuario `sa`, sin contraseña.
 | user    | user123    | USER        |
 
 Solo el usuario **admin** puede crear/editar/eliminar cursos y registrar
-evaluaciones. Cualquier usuario autenticado puede gestionar estudiantes y
-consultar cursos y evaluaciones. Los endpoints `GET /api/**` están abiertos
-para integraciones externas; los `POST/PUT/DELETE` de cursos y evaluaciones
+evaluaciones. Cualquier usuario (o estudiante) autenticado puede consultar cursos, evaluaciones y estudiantes (agregar estudiante). Los endpoints `GET /api/**` están abiertos para integraciones externas; los `POST/PUT/DELETE` de cursos y evaluaciones
 requieren rol ADMIN (autenticación básica o de formulario).
 
 ## Estructura del proyecto
